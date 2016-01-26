@@ -1,0 +1,13 @@
+
+
+ <div class="box gauge--3">
+  <h2>Caffeine</h2>
+  <p>mg-serving: {{ this.tea.caffeineScale }}</p>
+  <p>Rating: <span ng-show='{{this.tea.caffeineScale > 150}}'>HIGH</span>
+    <span ng-show='{{this.tea.caffeineScale < 60}}'>LOW</span>
+    <span ng-show='{{this.tea.caffeineScale > 60 && this.tea.caffeineScale < 150}}'>MEDIUM</span></p>
+  <div class="mask">
+    <div class="semi-circle"></div>
+    <div class="semi-circle--mask"></div>
+  </div>
+</div>

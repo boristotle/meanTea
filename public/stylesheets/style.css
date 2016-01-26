@@ -1,0 +1,129 @@
+body {
+  padding: 50px;
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+}
+
+a {
+  color: #00B7FF;
+}
+
+#border {
+  border: 1px solid grey;
+}
+
+
+#borderLeft {
+  border-left: 1px solid grey;
+}
+
+img {
+  height: 200px;
+  width: 200px;
+  margin-left: 50px;
+}
+
+.name {
+  font-size: 23px;
+  font-weight: bold;
+}
+
+#button {
+  margin: 5px;
+}
+
+#price, #th {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.teaEdit {
+  width: 30px;
+}
+
+
+
+
+/*Caffeine Meter*/
+
+.box {
+  /*border:1px solid lightgrey;*/
+  text-align: center;
+}
+
+.mask {
+  position: relative;
+  overflow: hidden;
+  display: block;
+  width: 12.5rem;
+  height: 6.25rem;
+  margin: 1.25rem;
+  margin-left: 25%;
+}
+
+.semi-circle {
+  position: relative;
+  display: block;
+  width: 12.5rem;
+  height: 6.25rem;
+  background: linear-gradient(to right, #c0392b 0%, #f1c40f 50%, #1abc9c 100%);
+  border-radius: 50% 50% 50% 50%/100% 100% 0% 0%;
+}
+.semi-circle::before {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  z-index: 2;
+  display: block;
+  width: 8.75rem;
+  height: 4.375rem;
+  margin-left: -4.375rem;
+  background: #fff;
+  border-radius: 50% 50% 50% 50%/100% 100% 0% 0%;
+}
+
+.semi-circle--mask {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 12.5rem;
+  height: 12.5rem;
+  background: transparent;
+  transform: rotate(120deg) translate3d(0, 0, 0);
+  transform-origin: center center;
+  backface-visibility: hidden;
+  transition: all .3s ease-in-out;
+}
+.semi-circle--mask::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0%;
+  z-index: 2;
+  display: block;
+  width: 12.625rem;
+  height: 6.375rem;
+  margin: -1px 0 0 -1px;
+  background: #f2f2f2;
+  border-radius: 50% 50% 50% 50%/100% 100% 0% 0%;
+}
+
+.gauge--1 .semi-circle {
+  background: #1abc9c;
+}
+
+.gauge--2 .semi-circle {
+  background: #c0392b;
+}
+.gauge--2 .semi-circle--mask {
+  transform: rotate(20deg) translate3d(0, 0, 0);
+}
+
+.btn--twitter {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  padding: .5rem;
+  background: #3498db;
+  color: #fff;
+}

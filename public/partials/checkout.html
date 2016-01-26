@@ -1,0 +1,55 @@
+<div class='container'>
+  <div class='row'>
+  <h2 class='col-md-9'>My Shopping Bag</h2>
+  <h2 class='col-md-3'>Order total: {{ totalPrice / 100 | currency:$USD }}</h2>
+</div>
+  
+  <div class='row'>
+    <div class='col-md-8' id='border'>
+      Product
+    </div>
+    <div class='col-md-1' id='border'>
+      Quantity
+    </div>
+    <div class='col-md-1' id='border'>
+      Sub-total
+    </div>
+  </div><!-- closes row 1 -->
+
+  <div class='row' id='border' ng-repeat='item in cart'>
+    <div class='col-md-8'>
+      <h2>{{ item.name }}</h2>
+      <img src='{{ item.imageUrl }}' />
+      <p><strong>Caffeine Scale: </strong>{{ item.caffeineScale }}</p>
+      <p><strong>Ingredients: </strong>{{ item.ingredients }}</p>
+      <p><strong>Rating: </strong>{{ item.rating }}</p>
+    </div>
+    <div class='col-md-1'>
+      <p ng-hide="editTea">{{ item.quantity }}</p>
+      <p><input ng-model='this.item.quantity' ng-show='editTea' class='teaEdit'></p>
+    </div>
+    <div class='col-md-1'>
+      <strong>{{ item.quantity * item.price / 100 | currency:$USD }}</strong>
+    </div>
+    <div class='col-md-2'>
+      <button ng-show='editTea' id='button' class='btn btn-warning' ng-click='editTheTea();editQuantity()'>Save</button>
+      <button ng-hide='editTea' id='button' class='btn btn-warning' ng-click='editTheTea()'>Edit</button>
+      <button id='button' class='btn btn-danger' ng-click='removeTea()'>Remove</button>
+    </div>
+  </div><!-- closes row 2 -->
+  <div class='row'>
+    <div class='col-md-2 col-md-offset-10'>
+    <button id='button' ng-show='cart.length != 0'>Place Order</button>
+    </div>
+  </div>
+
+
+
+
+
+
+
+
+
+
+</div>

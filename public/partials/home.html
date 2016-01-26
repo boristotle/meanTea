@@ -1,0 +1,78 @@
+
+
+
+<div class='container'>
+
+
+  <div class='row'>
+    <div class='col-md-4'>
+      Search by category:  <select id='category' name='category' ng-model='category'>
+                            <option value="">All</option>
+                            <option ng-repeat='tea in catList'>{{ tea }}</option>
+                           </select>
+    </div>
+    <div class='col-md-4'>
+      Search by name: <input type='text' ng-model='search.name'>
+    </div>
+    <div class='col-md-2 col-md-offset-2'>
+      <a href='/checkout'><button ng-click='totalPrice()' id='button' class='btn btn-primary'>Checkout | Bag: {{ bagCount }}</button></a>
+    </div>
+  </div><!--closes row 1 -->
+
+  <div class='row' id='border'>
+    <div class='col-md-4'>
+      <h5 id='th'>Tea</h5>
+    </div>
+    <div class='col-md-4'>
+      <h5 id='th'>Information</h5>
+    </div>
+    <div class='col-md-2 col-md-offset-2'>
+      Sort: <select id='price' name='price' ng-model='sortOrder'>
+                       <option value='price'>Lowest Price</option>
+                       <option value='-price'>Highest Price</option>
+                       <option value='-rating'>Highest Rating</option>
+                       <option value='-caffeineScale'>Highest Caffeine</option>
+                     </select>
+      </div>
+  </div><!--closes row 2 -->
+  <div class='row' ng-repeat="tea in teas | orderBy:sortOrder | filter:category | filter:search:strict" ng-if="tea.inStock == true">
+    <div class='col-md-12 teas' id='border'>
+
+      <div class='col-md-4'>
+        <img src='{{ tea.imageUrl }}'>
+      </div>
+      <div class='col-md-5' id='borderLeft'>
+        <p class='name'>{{ tea.name }} </p>
+        <p><strong>Price:</strong> {{ tea.price / 100 | currency:$USD }}</p>
+        <p><strong>Caffeine Scale:</strong> {{ tea.caffeineScale }}</p>
+        <p><strong>Ingredients:</strong> {{ tea.ingredients }}</p>
+        <p><strong>Rating:</strong> {{ tea.rating }}</p>
+        <p><strong>In Stock?</strong> Yes </p>
+        <p><strong>Categories:</strong></p>
+        <ul ng-repeat='category in tea.categories'>
+        <li>{{ category }}</li>
+        </ul>
+      </div>
+      <div class='col-md-3'>
+        <h4>Quantity: <select id='quantity' ng-model='quantity' ng-change='checkValue()'>
+                            <option value='1'>1</option>
+                            <option value='2'>2</option>
+                            <option value='3'>3</option>
+                            <option value='4'>4</option>
+                            <option value='5'>5</option>
+                            <option value='6'>6</option>
+                            <option value='7'>7</option>
+                            <option value='8'>8</option>
+                            <option value='9'>9</option>
+                            <option value='10'>10</option>
+                          </select>
+        <button class='btn btn-warning' id='button' ng-click='addToCart()'>Add to Bag</button>
+        </h4>
+        <gs-caffeine-meter meter-data="caffeineMeter"></gs-caffeine-meter>
+      </div>
+    </div>
+  </div><!--closes row 3 -->
+
+
+</div><!--closes container div for the page-->
+
